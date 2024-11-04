@@ -38,6 +38,7 @@ class ComposerStaticInit589cc0f65c3aaa7d4e9024d545bc1974
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'd21d43db5f6e840ee7b10744ec7fdf66' => __DIR__ . '/../..' . '/app/Helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -509,8 +510,13 @@ class ComposerStaticInit589cc0f65c3aaa7d4e9024d545bc1974
     );
 
     public static $classMap = array (
+        'App\\Http\\Controllers\\AdminCategoriesProController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminCategoriesProController.php',
+        'App\\Http\\Controllers\\AdminGenenalController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminGenenalController.php',
         'App\\Http\\Controllers\\AdminProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminProductController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/Models/Categories.php',
+        'App\\Models\\Products' => __DIR__ . '/../..' . '/app/Models/Products.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
