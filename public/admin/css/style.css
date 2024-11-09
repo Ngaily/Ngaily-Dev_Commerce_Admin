@@ -37,7 +37,10 @@ body {
 .sidebar {
     background-color: #eaedf1;
     padding: 20px;
-    /* height: 100vh; */
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+    overflow-y: auto;
 }
 
 .sidebar .nav-link {

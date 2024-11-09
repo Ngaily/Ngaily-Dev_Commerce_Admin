@@ -12,7 +12,7 @@
         <button class="btn btn-primary ml-2">Tìm kiếm</button>
     </div>
 
-    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('categories_blog.store') }}" method="POST" enctype="multipart/form-data">
         @if(session('success'))
                 <div class="alert alert-success">
         {{ session('success') }}
@@ -23,11 +23,6 @@
         <div class="mb-3">
             <label class="form-label">Tên danh mục</label>
             <input type="text" class="form-control" name="category_name" placeholder="Nhập tên danh mục" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Hình ảnh</label>
-            <input type="file" class="form-control" name="image" required>
         </div>
 
        <button type="submit" class="btn btn-primary">Thêm</button>

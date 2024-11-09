@@ -31,10 +31,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="footer bg-black text-center py-3 ">
+    {{-- <footer class="footer bg-black text-center py-3 ">
         <div class="container">
             <span class="text-muted">Footer</span>
         </div>
-    </footer>
+    </footer> --}}
 </body>
 </html>

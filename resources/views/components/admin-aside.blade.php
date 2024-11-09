@@ -17,12 +17,12 @@
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('product.index')}}">
+                <a class="nav-link" href="{{route('categories_blog.index')}}">
                     <i class="bi bi-postcard-fill ml-0"></i>Danh mục bài viết
                 </a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{route('product.index')}}">
+                <a class="nav-link" href="{{route('posts.index')}}">
                     <i class="bi bi-file-earmark-post ml-0"></i>Bài viết 
                 </a>
             </li>

@@ -26,22 +26,34 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($products as $product)
             <tr>
-                <td>1</td>
-                <td><div class="product-image-placeholder"></div></td>
-                <td>IPhone 16 PRM</td>
-                <td>30,000,000</td>
-                <td>Đẹp</td>
-                <td>Iphone</td>
-                <td>Ẩn</td>
+                <td>{{$product->id}}</td>
+                <td><img src="{{asset('storage/'. $product->image)}}" alt="" width="100px" height="150px"></td>
+                <td>{{$product->product_name}}</td>
+                <td>{{$product->price}}</td>
+                <td>{{$product->description}}</td>
+                <td>{{$product->category->category_name}}</td>
+                <td>
+                    <form action="{{ route('product.update-status', ['id' => $product->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" value="{{ $product->status }}" name="status">
+                        <button class="btn">
+                            <i class="{{ translateClassStatusCustom($product->status) }}" style="font-size: 20px"></i>
+                        </button>
+                    </form>
+                </td>
+
                 <td>
                     <button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
-                    <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                    <a href="{{route('product.destroy',['id'=>$product->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xoá sản phẩm không?')"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></a>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
-    <button class="btn btn-primary">Thêm sản phẩm</button>
+    <a href="{{route('product.create')}}"><button class="btn btn-primary">Thêm sản phẩm</button></a>
 </div>
 @endsection
 

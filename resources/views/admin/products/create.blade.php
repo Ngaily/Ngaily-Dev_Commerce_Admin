@@ -1,155 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Edit</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-}
+@extends('admin.layouts.admin')
+@section('title', 'Thêm sản phẩm')
+@section('content')
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Thêm sản phẩm</h2>
+</div>
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    height: 100%;
-    background-color: #f8f9fa;
-}
-
-.sidebar-sticky {
-    position: relative;
-    top: 0;
-}
-
-.nav-link {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.nav-link.active {
-    background-color: #e9ecef;
-    color: #000;
-}
-
-h2 {
-    font-weight: bold;
-    color: #343a40;
-}
-
-form {
-    background-color: #f1f3f5;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.form-control,
-.form-control-file {
-    margin-bottom: 20px;
-    height: 45px;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding: 10px 0;
-}
-
-.container {
-    max-width: 960px;
-}
-
-    </style>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block sidebar bg-light">
-                <div class="sidebar-sticky">
-                    <h3 class="text-center">ADMIN</h3>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Thống kê</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Sản phẩm</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Danh mục</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Quản lý đơn hàng</a>
-                        </li>
-                    </ul>
+<div class="table-responsive">
+    <div class="filter-options mb-4">
+        <button class="btn btn-secondary">Thêm điều kiện lọc</button>
+        <input class="form-control search-input d-inline-block" type="text" placeholder="Nhập từ khóa tìm kiếm" style="width: 300px;">
+        <button class="btn btn-primary ml-2">Tìm kiếm</button>
+    </div>
+   
+    {{-- <div class="container mt-5">
+        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+            @if(session('success'))
+                <div class="alert alert-success">
+            {{ session('success') }}
                 </div>
-            </nav>
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h2>Sửa sản phẩm</h2>
+            @endif
+            @csrf
+            @method('POST')
+            <div class="mb-3">
+                <label class="form-label">Tên sản phẩm</label>
+                <input type="text" class="form-control" name="product_name" required>
+            </div>
+            
+        
+            <div class="mb-3">
+                <label class="form-label">Hình ảnh</label>
+                <input type="file" class="form-control"  name="image" accept="image/*" required>
+            </div>
+            
+           
+            <div class="mb-3">
+                <label class="form-label">Giá</label>
+                <input type="number" class="form-control" name="price" min="0" step="0.01" required>
+            </div>
+            
+        
+            <div class="mb-3">
+                <label class="form-label">Mô tả</label>
+                <textarea class="form-control" name="description" rows="5" required></textarea>
+            </div>
+            
+            
+            <div class="mb-3">
+                <label class="form-label">Danh mục</label>
+                <select class="form-select" name="category_name" required>
+                    @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
+    </div> --}}
+    
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form class="needs-validation" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="">Tên sản phẩm</label>
+                        <input type="text" name="product_name" class="form-control" required placeholder="Nhập tên sản phẩm">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Giá</label>
+                        <input type="number" name="price" class="form-control" required placeholder="Nhập giá">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Hình ảnh</label>
+                        <input type="file" name="image" class="form-control" required>
+                    </div>
+            
+                    <div class="col-md-6 mb-3">
+                        <label for="">Danh mục</label>
+                        <select name="category_id" id="" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-12 mb-3">
+                        <label for="">Mô tả</label>
+                        <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                    </div>
                 </div>
-
-                <form>
-                    <div class="form-group">
-                        <label for="category">Danh mục</label>
-                        <input type="text" class="form-control" id="category" placeholder="Danh mục">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="productName">Tên sản phẩm</label>
-                        <input type="text" class="form-control" id="productName" placeholder="Tên sản phẩm">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Giá</label>
-                        <input type="text" class="form-control" id="price" placeholder="Giá">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="description">Mô tả</label>
-                        <textarea class="form-control" id="description" rows="3" placeholder="Mô tả"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="image">Ảnh</label>
-                        <input type="file" class="form-control-file" id="image">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </form>
-            </main>
-        </div>
+                <button class="btn btn-primary" type="submit"><i class="fe fe-check-circle fe-12"></i> Thêm</button>
+            </form>
+        </div> <!-- /.card-body -->
     </div>
 
-    <footer class="footer bg-light text-center">
-        <div class="container">
-            <span class="text-muted">Footer</span>
-        </div>
-    </footer>
+@endsection
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
+            
+                

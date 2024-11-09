@@ -19,8 +19,9 @@ class AdminCategoriesProController extends Controller
     }
     public function store(Request $request)
     {
-        $imagePath = '';
+
         try {
+            $imagePath = '';
             // validate
             $validateData = $request->validate([
                 'category_name' => 'required|string',
@@ -73,9 +74,9 @@ class AdminCategoriesProController extends Controller
         $imagePath = $category->image;
         $category->delete();
         if ($imagePath) {
-            Storage::delete('public/' . $imagePath);
+            Storage::disk('public')->delete($imagePath);
         }
-        $category->delete();
+
         return redirect()->route(route: 'categories.index')->with('success', 'Deleted category successfully');
     }
 }

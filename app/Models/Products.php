@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     protected $table = 'products';
-    protected $fillbale = [
+    protected $fillable = [
         'id',
         'product_name',
         'image',
@@ -17,4 +17,9 @@ class Products extends Model
         'status',
         'category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
+    }
 }
