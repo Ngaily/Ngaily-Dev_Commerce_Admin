@@ -61,6 +61,11 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <form class="needs-validation" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                @if(session('success'))
+                <div class="alert alert-success">
+            {{ session('success') }}
+                </div>
+            @endif
                 @csrf
                 @method('POST')
                 <div class="form-row">

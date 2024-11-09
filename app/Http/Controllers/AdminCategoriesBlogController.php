@@ -36,6 +36,26 @@ class AdminCategoriesBlogController extends Controller
         }
     }
 
+    public function edit(string $id)
+    {
+        $blog = CategoriesBlog::findOrFail($id);
+        return view('admin.categories_blog.edit', compact('blog'));
+    }
+    public function update(Request $request, string $id)
+    {
+        try {
+            $validateData = $request->validate([
+                'category_name' => 'required|string'
+            ]);
+            $blog = CategoriesBlog::findOrFail($id);
+            $blog->update([
+                'category_name' => $validateData['category_name']
+            ]);
+            return redirect()->route('categories_blog.index');
+        } catch (\Throwable $e) {
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error']);
+        }
+    }
     public function destroy(string $id)
     {
         $blogs = CategoriesBlog::findOrFail($id);

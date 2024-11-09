@@ -32,12 +32,16 @@ Route::get('/categories/{id}/destroy', [AdminCategoriesProController::class, 'de
 Route::get('/categories_blog', [AdminCategoriesBlogController::class, 'index'])->name('categories_blog.index');
 Route::get('/categories_blog/create', [AdminCategoriesBlogController::class, 'create'])->name('categories_blog.create');
 Route::post('/categories_blog/store', [AdminCategoriesBlogController::class, 'store'])->name('categories_blog.store');
+Route::get('/categories_blog/{id}/edit', [AdminCategoriesBlogController::class, 'edit'])->name('categories_blog.edit');
+Route::put('/categories_blog/{id}/update', [AdminCategoriesBlogController::class, 'update'])->name('categories_blog.update');
 Route::get('/categories_blog/{id}/destroy', [AdminCategoriesBlogController::class, 'destroy'])->name('categories_blog.destroy');
 
 // post
 Route::get('/posts', [AdminPostController::class, 'index'])->name('posts.index');
 Route::get('/posts/create', [AdminPostController::class, 'create'])->name('posts.create');
 Route::post('/posts/store', [AdminPostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{id}/edit', [AdminPostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}/update', [AdminPostController::class, 'update'])->name('posts.update');
 Route::get('/posts/{id}/destroy', [AdminPostController::class, 'destroy'])->name('posts.destroy');
 
 

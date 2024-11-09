@@ -28,14 +28,14 @@
             @foreach ($posts as $post)
             <tr>
                 <td>{{$post->id}}</td>
-                <td><img src="{{asset('storage/'. $post->image)}}" alt="" width="100px" height="150px"></td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->description}}</td>
-                <td>{{$post->content}}</td>
-                <td>{{$post->category_blog->category_name}}</td>
+                <td class="table-column-image"><img src="{{asset('storage/'. $post->image)}}" alt="" width="100px" height="150px"></td>
+                <td class="table-column-title">{{$post->title}}</td>
+                <td class="table-column-description">{{$post->description}}</td>
+                <td class="table-column-content">{{$post->content}}</td>
+                <td class="table-column-category">{{$post->category_blog->category_name}}</td>
 
                 <td>
-                    <button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
+                    <a href="{{route('posts.edit', ['id' => $post->id])}}"><button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button></a>
                     <a href="{{route('posts.destroy',['id'=>$post->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xoá bài viết không?')"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></a>
                 </td>
             </tr>

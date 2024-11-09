@@ -12,4 +12,8 @@ class CategoriesBlog extends Model
         'id',
         'category_name'
     ];
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'category_id');
+    }
 }

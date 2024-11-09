@@ -42,7 +42,7 @@ class AdminProductController extends Controller
                 'status' => 0,
                 'category_id' => $validateData['category_id'],
             ]);
-            return redirect()->route('product.index')->with('success', 'Thêm sản phẩm thành công');
+            return redirect()->back()->with('success', 'Thêm sản phẩm thành công');
         } catch (\Throwable $e) {
             Storage::delete($imagePath);
             return redirect()

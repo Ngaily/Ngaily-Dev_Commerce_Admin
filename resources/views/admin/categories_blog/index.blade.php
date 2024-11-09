@@ -26,7 +26,7 @@
                 <td>{{$blog->id}}</td>
                 <td>{{$blog->category_name}}</td> 
                 <td>
-                    <button class="btn btn-danger btn-sm"><i class="bi bi-pencil"></i></button>
+                    <a href="{{route('categories_blog.edit', ['id' => $blog->id])}}"><button class="btn btn-danger btn-sm"><i class="bi bi-pencil"></i></button></a>
                     <a href="{{route('categories_blog.destroy',['id'=>$blog->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xoá danh mục này không?')"><button class="btn btn-success btn-sm"><i class="bi bi-trash"></i></button></a>
                     
                 </td>
