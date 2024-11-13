@@ -18,25 +18,25 @@
         <div class="col-md-3 mb-4">
             <div class="card">
                 <p class="text-center">Sản phẩm</p>
-                <p><i class="bi bi-database-fill ml-5 mr-5"></i>200</p>
+                <p><i class="bi bi-database-fill ml-5 mr-5"></i>{{$productCount}}</p>
             </div>
         </div>
         <div class="col-md-3 mb-4">
             <div class="card">
                 <p class="text-center">Danh mục sản phẩm</p>
-                <p><i class="bi bi-calendar-event-fill ml-5 mr-5"></i></p>
+                <p><i class="bi bi-calendar-event-fill ml-5 mr-5"></i>{{$categoryCount}}</p>
             </div>
         </div>
         <div class="col-md-3 mb-4">
             <div class="card">
                 <p class="text-center">Bài viết</p>
-                <p><i class="bi bi-file-earmark-post ml-5 mr-5"></i>3000</p>
+                <p><i class="bi bi-file-earmark-post ml-5 mr-5"></i>{{$postCount}}</p>
             </div>
         </div>
         <div class="col-md-3 mb-4">
             <div class="card">
                 <p class="text-center">Danh mục bài viết</p>
-                <p><i class="bi bi-postcard-fill ml-5 mr-5"></i></p>
+                <p><i class="bi bi-postcard-fill ml-5 mr-5"></i>{{$categoryBlogCount}}</p>
             </div>
         </div>
         <div class="col-md-3 mb-4">
