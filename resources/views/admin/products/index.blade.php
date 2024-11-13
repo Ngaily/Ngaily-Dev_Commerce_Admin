@@ -46,7 +46,7 @@
                 </td>
 
                 <td>
-                    <button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
+                    <a href="{{route('product.edit',['id'=>$product->id])}}"><button class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button></a>
                     <a href="{{route('product.destroy',['id'=>$product->id])}}" onclick="return confirm('Bạn có chắc chắn muốn xoá sản phẩm không?')"><button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button></a>
                 </td>
             </tr>

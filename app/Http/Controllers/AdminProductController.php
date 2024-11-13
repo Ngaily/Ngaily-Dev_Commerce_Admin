@@ -72,6 +72,46 @@ class AdminProductController extends Controller
             return redirect()->back()->withErrors(['error' => 'Error']);
         }
     }
+
+    public function edit(string $id)
+    {
+        $categories = Categories::all();
+        $product = Products::findOrFail($id);
+        return view('admin.products.edit', compact('categories', 'product'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        try {
+            $validateData = $request->validate([
+                'product_name' => 'required|string',
+                'image' => 'nullable|image',
+                'price' => 'required|numeric',
+                'description' => 'required',
+                'category_id' => 'required|integer|exists:categories,id'
+            ]);
+            $product = Products::findOrFail($id);
+            $imageOld = $product['image'];
+            $imagePath = '';
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('products', 'public');
+            } else {
+                $imagePath = $imageOld;
+            }
+
+            $product->update([
+                'product_name' => $validateData['product_name'],
+                'image' => $imagePath,
+                'price' => $validateData['price'],
+                'description' => $validateData['description'],
+                'category_id' => $validateData['category_id']
+            ]);
+            return redirect()->route('product.index');
+        } catch (\Throwable $e) {
+            Storage::delete($imagePath);
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error']);
+        }
+    }
     public function destroy(string $id)
     {
         $product = Products::findOrFail($id);

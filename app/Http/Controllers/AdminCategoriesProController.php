@@ -68,6 +68,40 @@ class AdminCategoriesProController extends Controller
         }
     }
 
+    public function edit(string $id)
+    {
+
+        $categories = Categories::findOrFail($id);
+        return view('admin.categories.edit', compact('categories'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        try {
+            $validateData = $request->validate([
+                'category_name' => 'required|string',
+                'image' => 'nullable|image',
+            ]);
+            $categories = Categories::findOrFail($id);
+            $imageOld = $categories['image'];
+            $imagePath = '';
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('categories', 'public');
+            } else {
+                $imagePath = $imageOld;
+            }
+
+            $categories->update([
+                'category_name' => $validateData['category_name'],
+                'image' => $imagePath,
+            ]);
+            return redirect()->route('categories.index');
+        } catch (\Throwable $e) {
+            Storage::delete($imagePath);
+            return redirect()->back()->withInput()->withErrors(['error' => 'Error']);
+        }
+    }
+
     public function destroy(string $id)
     {
         $category = Categories::findOrFail($id);

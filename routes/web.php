@@ -20,12 +20,16 @@ Route::get('/product', [AdminProductController::class, 'index'])->name('product.
 Route::get('/product/create', [AdminProductController::class, 'create'])->name('product.create');
 Route::post('/product/store', [AdminProductController::class, 'store'])->name('product.store');
 Route::put('/product/{id}/update-status', [AdminProductController::class, 'updateStatus'])->name('product.update-status');
+Route::get('/product/{id}/edit', [AdminProductController::class, 'edit'])->name('product.edit');
+Route::put('/product/{id}/update', [AdminProductController::class, 'update'])->name('product.update');
 Route::get('/product/{id}/destroy', [AdminProductController::class, 'destroy'])->name('product.destroy');
 // categories
 Route::get('/categories', [AdminCategoriesProController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [AdminCategoriesProController::class, 'create'])->name('categories.create');
 Route::post('/categories/store', [AdminCategoriesProController::class, 'store'])->name('categories.store');
 Route::put('/categories/{id}/update-status', [AdminCategoriesProController::class, 'updateStatus'])->name('categories.update-status');
+Route::get('/categories/{id}/edit', [AdminCategoriesProController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}/update', [AdminCategoriesProController::class, 'update'])->name('categories.update');
 Route::get('/categories/{id}/destroy', [AdminCategoriesProController::class, 'destroy'])->name('categories.destroy');
 
 // categories_blog

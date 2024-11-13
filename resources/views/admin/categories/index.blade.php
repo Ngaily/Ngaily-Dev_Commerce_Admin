@@ -38,10 +38,8 @@
                         </button>
                     </form>
                 </td>
-
-                
                 <td>
-                    <button class="btn btn-danger btn-sm"><i class="bi bi-pencil"></i></button>
+                    <a href="{{route('categories.edit', ['id' =>$dm->id])}}"><button class="btn btn-danger btn-sm"><i class="bi bi-pencil"></i></button></a>
                     <a href="{{route('categories.destroy',['id'=>$dm->id])}}" onclick="return confirm('Are you sure?')"><button class="btn btn-success btn-sm"><i class="bi bi-trash"></i></button></a>
                     
                 </td>
