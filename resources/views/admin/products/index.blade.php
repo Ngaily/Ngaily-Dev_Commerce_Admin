@@ -29,7 +29,10 @@
             @foreach ($products as $product)
             <tr>
                 <td>{{$product->id}}</td>
-                <td><img src="{{asset('storage/'. $product->image)}}" alt="" width="100px" height="150px"></td>
+                <td>
+                    <a href="{{ route('product.image.create', ['id' => $product->id]) }}" class="custom-image-wrapper">
+                    <img src="{{asset('storage/'. $product->image)}}" alt="" width="100px" height="150px">
+                </td>
                 <td>{{$product->product_name}}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->description}}</td>

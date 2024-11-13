@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AdminCategoriesProController;
 use App\Http\Controllers\AdminGenenalController;
+use App\Http\Controllers\AdminImageController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\HomeController;
 
@@ -23,6 +24,11 @@ Route::put('/product/{id}/update-status', [AdminProductController::class, 'updat
 Route::get('/product/{id}/edit', [AdminProductController::class, 'edit'])->name('product.edit');
 Route::put('/product/{id}/update', [AdminProductController::class, 'update'])->name('product.update');
 Route::get('/product/{id}/destroy', [AdminProductController::class, 'destroy'])->name('product.destroy');
+
+// image product
+Route::get('/product/{id}/image/create', [AdminImageController::class, 'create'])->name('product.image.create');
+Route::post('/product/{id}/image/store', [AdminImageController::class, 'store'])->name('product.image.store');
+Route::get('/product/{id}/image/destroy', [AdminImageController::class, 'destroy'])->name('product.image.destroy');
 // categories
 Route::get('/categories', [AdminCategoriesProController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [AdminCategoriesProController::class, 'create'])->name('categories.create');
